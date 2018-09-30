@@ -7,9 +7,11 @@ SOURCES += \
     SortingModule/sname.cpp \
     main.cpp \
     ER_Idiom/er_idiom.cpp \
-    IntPolindrome/intpolindrome.cpp
+    IntPolindrome/intpolindrome.cpp \
+    ReversSLinkedList/reversslinkedlist.cpp
 
 HEADERS += \
     SortingModule/sname.h \
     ER_Idiom/er_idiom.h \
-    IntPolindrome/intpolindrome.h
+    IntPolindrome/intpolindrome.h \
+    ReversSLinkedList/reversslinkedlist.h

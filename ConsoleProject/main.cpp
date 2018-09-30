@@ -1,13 +1,15 @@
-#include <iostream>
-
-#include "SortingModule/sname.h"
-#include "ER_Idiom/er_idiom.h"
+#include "ReversSLinkedList/reversslinkedlist.h"
 #include "IntPolindrome/intpolindrome.h"
+#include "ER_Idiom/er_idiom.h"
+#include "SortingModule/sname.h"
 
 using namespace std;
 
 int main()
 {
+
+
+//    ReversSLinkedList rSLinkedList; // Пример модуля для переворота однонаправленного списка
 
 //    IntPolindrome intPolindrome; // Класс поиска максимального полиндорома для произведения двух трёхзначных цифр
 
