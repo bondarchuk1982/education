@@ -6,8 +6,10 @@ CONFIG -= qt
 SOURCES += \
     SortingModule/sname.cpp \
     main.cpp \
-    ER_Idiom/er_idiom.cpp
+    ER_Idiom/er_idiom.cpp \
+    IntPolindrome/intpolindrome.cpp
 
 HEADERS += \
     SortingModule/sname.h \
-    ER_Idiom/er_idiom.h
+    ER_Idiom/er_idiom.h \
+    IntPolindrome/intpolindrome.h

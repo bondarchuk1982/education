@@ -2,11 +2,20 @@
 
 #include "SortingModule/sname.h"
 #include "ER_Idiom/er_idiom.h"
+#include "IntPolindrome/intpolindrome.h"
 
 using namespace std;
 
 int main()
 {
+
+//    IntPolindrome intPolindrome; // Класс поиска максимального полиндорома для произведения двух трёхзначных цифр
+
+/* // Erase–remove idiom
+    ER_Idiom erIdiom;
+    erIdiom.ER_IdiomModule();
+*/
+
 /* // SortingModule
     SName sName;
     sName.wFile();
@@ -14,11 +23,5 @@ int main()
     sName.arrayInTerminal();
     sName.nameToNumber();
 */
-
-/* // Erase–remove idiom
-    ER_Idiom erIdiom;
-    erIdiom.ER_IdiomModule();
-*/
-
     return 0;
 }
