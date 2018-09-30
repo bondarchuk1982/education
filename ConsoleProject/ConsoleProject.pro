@@ -5,7 +5,9 @@ CONFIG -= qt
 
 SOURCES += \
     SortingModule/sname.cpp \
-    main.cpp
+    main.cpp \
+    ER_Idiom/er_idiom.cpp
 
 HEADERS += \
-    SortingModule/sname.h
+    SortingModule/sname.h \
+    ER_Idiom/er_idiom.h
