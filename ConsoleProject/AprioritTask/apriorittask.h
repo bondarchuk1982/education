@@ -8,10 +8,13 @@
 class AprioritTask
 {
 public:
-    AprioritTask(size_t, size_t);
+    AprioritTask() {}
 
-    void addDataInLine(size_t, size_t, size_t);
-    void setLine(std::vector<char>&, size_t, size_t);
+    bool setField(size_t, size_t);
+
+    bool addDataInLine(size_t, size_t, size_t);
+    bool setLine(std::vector<char>&, size_t, size_t);
+
     int getLampsCount();
 private:
     std::vector<std::vector<char> > vI;

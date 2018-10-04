@@ -1,31 +1,43 @@
 #include "apriorittask.h"
 
-AprioritTask::AprioritTask(size_t x, size_t y)
+bool AprioritTask::setField(size_t m, size_t n)
 {
-    for (size_t k = 0; k < y; ++k) {
-        std::vector<char> vJ(x, 'f');
+    if (m == 0 || n == 0 || m > 1000000000 || n > 1000000000) {
+        std::cout << "М и N должны быть больше 0 и меньше 1 000 000 000!" << std::endl;
+        return false;
+    }
+
+    for (size_t k = 0; k < n; ++k) {
+        std::vector<char> vJ(m, 'f');
         vI.push_back(vJ);
     }
+
+    return true;
 }
 
-void AprioritTask::addDataInLine(size_t n, size_t c1, size_t c2)
+bool AprioritTask::addDataInLine(size_t n, size_t c1, size_t c2)
 {
     if (n > vI.size() || n < 1) {
         std::cout << "Ошибка! Указанная линия за пределами размера поля!" << std::endl;
+        return false;
     }
     else {
-        setLine(vI[n - 1], c1, c2);
+        if (!setLine(vI[n - 1], c1, c2)) return false;
     }
+    return true;
 }
 
-void AprioritTask::setLine(std::vector<char> &v, size_t c1, size_t c2)
+bool AprioritTask::setLine(std::vector<char> &v, size_t c1, size_t c2)
 {
-    if (c1 > v.size() || c1 < 1 || c2 > v.size() || c2 > 1) {
+    if (c1 > v.size() || c1 < 1 || c2 > v.size() || c2 < 1) {
         std::cout << "Ошибка! Указанные клетки за пределами размера поля!" << std::endl;
+        return false;
     }
     else {
         std::fill(v.begin() + (c1 - 1), v.end() - (v.size() - c2), 't');
     }
+
+    return true;
 }
 
 int AprioritTask::getLampsCount()

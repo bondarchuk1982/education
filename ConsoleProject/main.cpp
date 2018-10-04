@@ -14,21 +14,27 @@ int main()
 {
     size_t m = 0, n = 0, k = 0;
 
-    std::cout << "Введите размеры поля MxN и количество трамвайных полей:" << std::endl;
+    std::cout << "Введите размеры поля MxN и количество трамвайных линий:" << std::endl;
     std::cin >> m >> n >> k;
 
-    AprioritTask aTask(m, n);
+    AprioritTask aTask;
+    aTask.setField(m, n);
 
-    while (k != 0) {
-        size_t c1 = 0, c2 = 0;
-        std::cin >> n >> c1 >> c2;
+    if (k < 1000) {
+        while (k != 0) {
+            size_t c1 = 0, c2 = 0;
+            std::cin >> n >> c1 >> c2;
 
-        aTask.addDataInLine(n, c1, c2);
+            if (aTask.addDataInLine(n, c1, c2))
+                k--;
+        }
 
-        k--;
+        std::cout << "Количество клеток для фонарей: " << aTask.getLampsCount() << std::endl;
+    }
+    else {
+        std::cout << "Ошибка! Превышено количество трамвайных линий!" << std::endl;
     }
 
-    std::cout << "Количество фораней: " << aTask.getLampsCount() << std::endl;
 
 /*  Класс для сортировка массива char
     CharArraySorts chArraySorts;
