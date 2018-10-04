@@ -10,7 +10,8 @@ SOURCES += \
     SortingModule/sname.cpp \
     StringPolindrome/stringpolindrome.cpp \
     CharArraySorts/chararraysorts.cpp \
-    main.cpp
+    main.cpp \
+    AprioritTask/apriorittask.cpp
 
 HEADERS += \
     ER_Idiom/er_idiom.h \
@@ -18,4 +19,5 @@ HEADERS += \
     ReversSLinkedList/reversslinkedlist.h \
     SortingModule/sname.h \
     StringPolindrome/stringpolindrome.h \
-    CharArraySorts/chararraysorts.h
+    CharArraySorts/chararraysorts.h \
+    AprioritTask/apriorittask.h
