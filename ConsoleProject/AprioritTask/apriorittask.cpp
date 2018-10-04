@@ -3,7 +3,6 @@
 bool AprioritTask::setField(size_t m, size_t n)
 {
     if (m == 0 || n == 0 || m > 1000000000 || n > 1000000000) {
-        std::cout << "М и N должны быть больше 0 и меньше 1 000 000 000!" << std::endl;
         return false;
     }
 
@@ -18,7 +17,6 @@ bool AprioritTask::setField(size_t m, size_t n)
 bool AprioritTask::addDataInLine(size_t n, size_t c1, size_t c2)
 {
     if (n > vI.size() || n < 1) {
-        std::cout << "Ошибка! Указанная линия за пределами размера поля!" << std::endl;
         return false;
     }
     else {
@@ -29,8 +27,7 @@ bool AprioritTask::addDataInLine(size_t n, size_t c1, size_t c2)
 
 bool AprioritTask::setLine(std::vector<char> &v, size_t c1, size_t c2)
 {
-    if (c1 > v.size() || c1 < 1 || c2 > v.size() || c2 < 1) {
-        std::cout << "Ошибка! Указанные клетки за пределами размера поля!" << std::endl;
+    if (c1 > v.size() || c1 < 1 || c2 > v.size() || c2 < 1 || c2 < c1) {
         return false;
     }
     else {

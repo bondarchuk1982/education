@@ -10,10 +10,12 @@ HEADERS += \
         tst_gtest.h \
     ../ConsoleProject/SortingModule/sname.h \
     ../ConsoleProject/StringPolindrome/stringpolindrome.h \
-    ../ConsoleProject/CharArraySorts/chararraysorts.h
+    ../ConsoleProject/CharArraySorts/chararraysorts.h \
+    ../ConsoleProject/AprioritTask/apriorittask.h
 
 SOURCES += \
         main.cpp \
     ../ConsoleProject/SortingModule/sname.cpp \
     ../ConsoleProject/StringPolindrome/stringpolindrome.cpp \
-    ../ConsoleProject/CharArraySorts/chararraysorts.cpp
+    ../ConsoleProject/CharArraySorts/chararraysorts.cpp \
+    ../ConsoleProject/AprioritTask/apriorittask.cpp

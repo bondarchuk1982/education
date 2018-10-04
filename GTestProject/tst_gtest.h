@@ -3,24 +3,84 @@
 extern char** my_argv;
 
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 #include <../ConsoleProject/SortingModule/sname.h>
 #include <../ConsoleProject/StringPolindrome/stringpolindrome.h>
 #include <../ConsoleProject/CharArraySorts/chararraysorts.h>
+#include <../ConsoleProject/AprioritTask/apriorittask.h>
 
 using namespace testing;
 
-TEST(GTests, CharArraySortsTest)
+class TestsClass : public ::testing::Test
 {
-    CharArraySorts chArraySorts;
+protected:
+    AprioritTask aprioritTask;
+//	CharArraySorts chArraySorts;
+};
+
+TEST_F(TestsClass, ATaskSetFieldTest)
+{
+    EXPECT_TRUE(aprioritTask.setField(4, 4));
+    EXPECT_FALSE(aprioritTask.setField(0, 4));
+    EXPECT_FALSE(aprioritTask.setField(4, 0));
+    EXPECT_FALSE(aprioritTask.setField(1000000001, 4));
+    EXPECT_FALSE(aprioritTask.setField(4, 1000000001));
+    EXPECT_FALSE(aprioritTask.setField(0, 0));
+    EXPECT_FALSE(aprioritTask.setField(1000000001, 1000000001));
+    EXPECT_FALSE(aprioritTask.setField(-4, 4));
+    EXPECT_FALSE(aprioritTask.setField(4, -4));
+}
+
+TEST_F(TestsClass, ATaskAddDataInLineTest)
+{
+    aprioritTask.setField(4, 4);
+    EXPECT_TRUE(aprioritTask.addDataInLine(4, 4, 4));
+    EXPECT_FALSE(aprioritTask.addDataInLine(0, 4 , 4));
+    EXPECT_FALSE(aprioritTask.addDataInLine(10, 4 , 4));
+    EXPECT_FALSE(aprioritTask.addDataInLine(-10, 4 , 4));
+    EXPECT_FALSE(aprioritTask.addDataInLine(10, -4 , 4));
+    EXPECT_FALSE(aprioritTask.addDataInLine(10, 4 , -4));
+}
+
+TEST_F(TestsClass, ATaskSetLineTest)
+{
+    std::vector<char> v(4, 'f');
+
+    EXPECT_TRUE(aprioritTask.setLine(v, 2, 4));
+    EXPECT_FALSE(aprioritTask.setLine(v, 0 , 4));
+    EXPECT_FALSE(aprioritTask.setLine(v, 2 , 0));
+    EXPECT_FALSE(aprioritTask.setLine(v, -2, 4));
+    EXPECT_FALSE(aprioritTask.setLine(v, 2, -4));
+}
+
+TEST_F(TestsClass, ATaskGetLampsCountTest)
+{
+    aprioritTask.setField(4, 4);
+    EXPECT_EQ(aprioritTask.getLampsCount(), 16);
+
+    aprioritTask.addDataInLine(2, 2, 3);
+    aprioritTask.addDataInLine(3, 1, 4);
+    aprioritTask.addDataInLine(4, 4, 4);
+    EXPECT_EQ(aprioritTask.getLampsCount(), 9);
+
+    aprioritTask.addDataInLine(1, 1, 4);
+    aprioritTask.addDataInLine(2, 1, 4);
+    aprioritTask.addDataInLine(3, 1, 4);
+    aprioritTask.addDataInLine(4, 1, 4);
+    EXPECT_EQ(aprioritTask.getLampsCount(), 0);
+}
+
+/*
+TEST_F(TestsClass, CharArraySortsTest)
+{
 
     char *input = new char[6]{'b', 'd', 'a', 'c', 'e'};
     char *expected = new char[6]{'a', 'b', 'c', 'd', 'e'};
     char *actual = chArraySorts(input);
-//    char *actual = chArraySorts(*my_argv);
 
     EXPECT_STREQ(actual, expected);
 }
-
+*/
 /*TEST(GTests, StringPolindromeTest)
 {
     StringPolindrome strPolindrome;
