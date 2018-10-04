@@ -8,8 +8,12 @@ CONFIG -= qt
 
 HEADERS += \
         tst_gtest.h \
-    ../ConsoleProject/SortingModule/sname.h
+    ../ConsoleProject/SortingModule/sname.h \
+    ../ConsoleProject/StringPolindrome/stringpolindrome.h \
+    ../ConsoleProject/CharArraySorts/chararraysorts.h
 
 SOURCES += \
         main.cpp \
-    ../ConsoleProject/SortingModule/sname.cpp
+    ../ConsoleProject/SortingModule/sname.cpp \
+    ../ConsoleProject/StringPolindrome/stringpolindrome.cpp \
+    ../ConsoleProject/CharArraySorts/chararraysorts.cpp

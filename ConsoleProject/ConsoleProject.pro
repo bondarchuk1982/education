@@ -4,14 +4,18 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    SortingModule/sname.cpp \
-    main.cpp \
     ER_Idiom/er_idiom.cpp \
     IntPolindrome/intpolindrome.cpp \
-    ReversSLinkedList/reversslinkedlist.cpp
+    ReversSLinkedList/reversslinkedlist.cpp \
+    SortingModule/sname.cpp \
+    StringPolindrome/stringpolindrome.cpp \
+    CharArraySorts/chararraysorts.cpp \
+    main.cpp
 
 HEADERS += \
-    SortingModule/sname.h \
     ER_Idiom/er_idiom.h \
     IntPolindrome/intpolindrome.h \
-    ReversSLinkedList/reversslinkedlist.h
+    ReversSLinkedList/reversslinkedlist.h \
+    SortingModule/sname.h \
+    StringPolindrome/stringpolindrome.h \
+    CharArraySorts/chararraysorts.h
