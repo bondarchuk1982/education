@@ -12,6 +12,7 @@ void SName::wFile()
         std::cout << "Файл не создан или не найден!\n"; // сообщить об этом
     }
     else {
+        std::cout << "Записываем файл!\n";
 
         std::string str = "";
 
@@ -37,6 +38,8 @@ void SName::rFile()
     if (!fs.is_open()) // если файл не открыт
         std::cout << "Файл не найден!\n"; // сообщить об этом
     else {
+        std::cout << "Читаем файл!\n";
+
         std::ostringstream oss;
         oss << fs.rdbuf();
         str = oss.str();
@@ -46,37 +49,6 @@ void SName::rFile()
     parseString(str);
 }
 
-void SName::setArray(std::array<std::string, 5000> &a) { nameArray = a; }
-std::array<std::string, 5000> SName::getArray() { return nameArray; }
-
-std::array<std::string, 5000> SName::stlSortArray(std::array<std::string, 5000> nameList)
-{
-    std::sort(nameList.begin(), nameList.end());
-    return nameList;
-}
-std::array<std::string, 5000> SName::sortArray(std::array<std::string, 5000> nameList)
-{
-    size_t index = 0;
-    for (auto &i : nameList) { // цикл по элементам массива имён
-
-        size_t min_index = index; // индекс текущего имени в массиве
-
-        for (size_t j = index + 1; j < nameList.size(); j++) { // цикл по элементам массива имён
-            if (i == "") break; // конец массива
-            else if (nameList[j] < nameList[min_index]) min_index = j; // если нашёлось имя меньшее (по алфавиту) чем текущее в
-                                                                        // массиве присваиваем минимальному индексу его позицию
-        }
-
-        if (index != min_index) { // если текущий индекс не совпадает с минимальным именем
-            std::string tmp = i; // из текущей позиции записываем имя во временную переменную
-            i = nameList[min_index]; // минимальное имя записываем в текущую позицию
-            nameList[min_index] = tmp; // в позицию минимального имени записываем значение из временной переменной
-        }
-        index++;
-    }
-    return nameList;
-}
-
 void SName::parseString(std::string &str)
 {
     std::string tmp = "";
@@ -84,7 +56,7 @@ void SName::parseString(std::string &str)
 
     std::array<std::string, 5000> nArray;
 
-    for (auto i : str){
+    for (const auto& i : str){
         if (isalpha(i)) {
             tmp += i;
         }
@@ -96,35 +68,71 @@ void SName::parseString(std::string &str)
             }
         }
     }
-
-    setArray(nArray);
+    sortArray(nArray);
 }
 
-void SName::arrayInTerminal()
+void SName::stlSortArray(std::array<std::string, 5000>& nArray)
+{
+    std::cout << "Сортируем методом std::sort!\n";
+    std::sort(nArray.begin(), nArray.end());
+}
+void SName::sortArray(std::array<std::string, 5000>& nArray)
+{
+    std::cout << "Сортируем!\n";
+
+/* Сортировка с использованием алгоритмов STL для поиска и перестановки элементов в массиве
+ * но без использования алгоритма сортировки std::sort
+*/
+/*    std::array<std::string, 0>::iterator begin = nArray.begin();
+    while (begin != std::end(nArray)) { // цикл по элементам массива имён
+        std::iter_swap(begin, std::min_element(begin, std::end(nArray)));
+
+        begin++;
+    }
+*/
+// Сортировка без использования алгоритмов STL
+    size_t index = 0;
+    for (auto &i : nArray) { // цикл по элементам массива имён
+
+        size_t min_index = index; // индекс текущего имени в массиве
+
+        for (size_t j = index + 1; j < nArray.size(); j++) { // цикл по элементам массива имён
+            if (i == "") break; // конец массива
+            else if (nArray[j] < nArray[min_index]) min_index = j; // если нашлось имя меньшее (по алфавиту) чем текущее в
+                                                                        // массиве присваиваем минимальному индексу его позицию
+        }
+
+        if (index != min_index) { // если текущий индекс не совпадает с минимальным именем
+            std::string tmp = i; // из текущей позиции записываем имя во временную переменную
+            i = nArray[min_index]; // минимальное имя записываем в текущую позицию
+            nArray[min_index] = tmp; // в позицию минимального имени записываем значение из временной переменной
+        }
+        index++;
+    }
+
+    arrayInTerminal(nArray);
+}
+
+void SName::arrayInTerminal(std::array<std::string, 5000>& nArray)
 {
     std::cout << "**********************************************************\n";
-    for (auto i : nameArray) { // цикл по элементам массива имён
+    for (const auto& i : nArray) { // цикл по элементам массива имён
         std::cout << i << '\n'; // выводим очередное имя из массива
     }
     std::cout << "**********************************************************\n";
+    nameToNumber(nArray);
 }
 
-void SName::nameToNumber()
+void SName::nameToNumber(std::array<std::string, 5000>& nArray)
 {
     double rezult = 0; // общая цифра для всех имён
 
-    for (auto i : nameArray) { // цикл по элементам массива имён
+    for (const auto& i : nArray) { // цикл по элементам массива имён
+        char buff[i.length()]; // создаём буфер символов для имени
+        strcpy(buff, i.c_str()); // копируем символы имени в буфер
 
-        std::string str = i; // считываем имя из массива имён
-        char buff[str.length() + 1]; // создаём буфер символов для имени
-        strcpy(buff, str.c_str()); // копируем символы имени в буфер
-
-        double num = 0; // цифра для текущего имени
-
-        for (size_t i = 0; i < str.length(); i++) // цикл по символам буфера
-            num += static_cast<int>(buff[i]) - 96; // преобразуем символ в цифру
-
-        rezult += num; // суммируем к общему числу
+        for (size_t j = 0; j < i.length(); j++) // цикл по символам буфера
+            rezult += static_cast<int>(buff[j]) - 96; // преобразуем символ в цифру
     }
 
     std::cout << "**********************************************************\n";

@@ -12,7 +12,7 @@ using namespace std;
 //int main(int argc, char *argv[])
 int main()
 {
-    size_t m = 0, n = 0, k = 0;
+/*    size_t m = 0, n = 0, k = 0;
 
     std::cout << "Введите размеры поля MxN и количество трамвайных линий:" << std::endl;
     std::cin >> m >> n >> k;
@@ -34,7 +34,7 @@ int main()
     else {
         std::cout << "Ошибка! Превышено количество трамвайных линий!" << std::endl;
     }
-
+*/
 
 /*  Класс для сортировка массива char
     CharArraySorts chArraySorts;
@@ -61,12 +61,10 @@ int main()
     erIdiom.ER_IdiomModule();
 */
 
-/* // SortingModule
+ // SortingModule
     SName sName;
     sName.wFile();
     sName.rFile();
-    sName.arrayInTerminal();
-    sName.nameToNumber();
-*/
+
     return 0;
 }

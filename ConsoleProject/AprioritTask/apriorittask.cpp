@@ -41,7 +41,7 @@ int AprioritTask::getLampsCount()
 {
     int count = 0;
 
-    for (auto i : vI) {
+    for (const auto &i : vI) {
         count += std::count(i.begin(), i.end(), 'f');
     }
 
